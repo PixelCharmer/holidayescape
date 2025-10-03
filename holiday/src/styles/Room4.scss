@@ -1,0 +1,446 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Kranky&display=swap');
+
+.room4 {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    color: #e9edf7;
+    overflow: hidden !important;
+    font-family: 'Kranky', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+    .scene {
+        position: relative;
+        width: min(1200px, 96vw);
+        aspect-ratio: 16 / 9;
+        margin: 0 auto;
+    }
+
+    .start-puzzle-btn {
+        position: absolute;
+        top: 54%;
+        left: 42%;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.01);
+        background: transparent;
+        color: #a3a9b8;
+        font-size: 14px;
+        cursor: pointer;
+        transform: rotate(9deg);
+        transition: transform .15s ease, background .2s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            background: rgba(10,14,22,0.7);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .bell-glow {
+        position: absolute;
+        pointer-events: none;
+        top: 18%;
+        left: 58%;
+        width: 18%;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        animation: pulse 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+        from {
+            transform: scale(1);
+            opacity: .85;
+        }
+
+        to {
+            transform: scale(1.04);
+            opacity: 1;
+        }
+    }
+
+    .box {
+        position: absolute;
+        display: block;
+        pointer-events: none;
+    }
+    /* Tweak these positions/sizes to taste */
+    .box1 {
+        top: 62%;
+        left: 10%;
+        width: 100px;
+    }
+
+    .box2 {
+        top: 21%;
+        left: 45%;
+        width: 90px;
+    }
+
+    .box3 {
+        top: 80%;
+        left: 44%;
+        width: 80px;
+    }
+
+    .box4 {
+        top: 75%;
+        left: 20%;
+        width: 150px;
+    }
+
+    .box5 {
+        top: 42%;
+        left: 68%;
+        width: 160px;
+    }
+
+    .hint-img {
+        position: absolute;
+        display: block;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .gift-tag {
+        top: 43%;
+        left: 23%;
+        width: 100px;
+    }
+
+    .ribbon {
+        top: 70%;
+        left: 59.5%;
+        width: min(12vw, 160px);
+    }
+
+    .ornament {
+        top: 18%;
+        left: 30%;
+        width: 30px;
+    }
+    /* ===============================
+       Puzzle overlay styles
+       =============================== */
+    .r4p-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 8, 12, 0.65);
+        display: grid;
+        place-items: center;
+        z-index: 40;
+        backdrop-filter: blur(3px);
+    }
+
+    .r4p-panel {
+        width: min(92vw, 780px);
+        background: linear-gradient(180deg, #0e1218, #0b0f14);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        box-shadow: 0 18px 48px rgba(0,0,0,0.6);
+        padding: 16px 16px 22px;
+
+        &.shake {
+            animation: shake .35s ease;
+        }
+    }
+
+    @keyframes shake {
+        0% {
+            transform: translateX(0)
+        }
+
+        20% {
+            transform: translateX(-6px)
+        }
+
+        40% {
+            transform: translateX(6px)
+        }
+
+        60% {
+            transform: translateX(-4px)
+        }
+
+        80% {
+            transform: translateX(4px)
+        }
+
+        100% {
+            transform: translateX(0)
+        }
+    }
+
+    .r4p-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .r4p-title {
+        font-size: clamp(18px, 2.2vw, 24px);
+        margin: 0;
+    }
+
+    .r4p-close {
+        border: 0;
+        background: rgba(255,255,255,0.06);
+        color: #e9edf7;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .r4p-intro {
+        opacity: 0.9;
+        margin: 6px 0 14px;
+        line-height: 1.4;
+        font-size: clamp(14px, 1.4vw, 16px);
+    }
+
+    .r4p-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: clamp(8px, 1.4vw, 14px);
+        align-items: end;
+    }
+
+    .r4p-choice {
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.02);
+        border-radius: 12px;
+        padding: 8px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+        }
+
+        &.picked {
+            border-color: rgba(255,255,255,0.22);
+        }
+    }
+
+    .r4p-label {
+        position: absolute;
+        bottom: 6px;
+        right: 8px;
+        font-size: clamp(12px, 1.2vw, 14px);
+        opacity: 0.8;
+    }
+
+    .r4p-wrong {
+        margin-top: 12px;
+        color: #ffb3b3;
+        font-weight: 600;
+    }
+
+    .r4p-success {
+        margin-top: 12px;
+        color: #c6ffd9;
+        font-weight: 700;
+    }
+    /* Confetti */
+    .r4p-confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 41;
+    }
+
+    .r4p-confetti .confetti {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        width: 8px;
+        height: 14px;
+        background: hsl(var(--h, 0) 80% 60%);
+        transform: translateX(calc(var(--x, 0) * 1px));
+        animation: fall 900ms linear forwards;
+        border-radius: 2px;
+    }
+
+    .r4p-confetti .confetti:nth-child(odd) {
+        --h: 210;
+        --x: -220;
+    }
+
+    .r4p-confetti .confetti:nth-child(2n) {
+        --h: 45;
+        --x: 120;
+    }
+
+    .r4p-confetti .confetti:nth-child(3n) {
+        --h: 140;
+        --x: -60;
+    }
+
+    .r4p-confetti .confetti:nth-child(4n) {
+        --h: 10;
+        --x: 220;
+    }
+
+    .r4p-confetti .confetti:nth-child(5n) {
+        --h: 280;
+        --x: -160;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translate(calc(var(--x) * 1px), 120vh) rotate(260deg);
+            opacity: 0.1;
+        }
+    }
+    /* ---------- Hint node + card ---------- */
+    .hint-node-wrap {
+        position: absolute; /* move this wrapper to move node + card together */
+        z-index: 2;
+
+        .hint-node {
+            width: 44px;
+            height: 44px;
+            border-radius: 7px;
+            border: 1px solid rgba(255,255,255,0.02);
+            background: radial-gradient(circle at 50% 45%, rgba(255,255,255,0.12), rgba(255,255,255,0.06) 60%, rgba(0,0,0,0.2) 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.45), inset 0 0 12px rgba(255,255,255,0.08);
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+
+            &:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 14px rgba(0,0,0,0.55), 0 0 10px rgba(120,200,255,0.25);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        .hint-card {
+            position: absolute;
+            top: -4px; /* appears above the button */
+            left: calc(100% + 10px); /* to the right of the button */
+            transform: translateY(-100%); /* anchor nicely above */
+            width: clamp(180px, 24vw, 280px);
+            max-width: 90vw;
+            padding: 12px 14px 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(10,14,22,0.78);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+            line-height: 1.35;
+            font-size: 17px;
+            color: #e9edf7;
+            z-index: 3;
+            /* little pointer */
+            &::before {
+                content: "";
+                position: absolute;
+                right: 100%;
+                top: 18px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent rgba(10,14,22,0.78) transparent transparent;
+                filter: drop-shadow(-1px 1px 0 rgba(255,255,255,0.18));
+            }
+
+            .close-hint {
+                position: absolute;
+                top: 6px;
+                right: 8px;
+                width: 24px;
+                height: 24px;
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.16);
+                background: rgba(255,255,255,0.05);
+                color: #e9edf7;
+                font-size: 16px;
+                line-height: 1;
+                cursor: pointer;
+            }
+        }
+    }
+    /* Place + (optionally) resize each node individually by editing THESE */
+    .node1 {
+        top: 43%;
+        left: 23%;
+    }
+
+    .node2 {
+        top: 70%;
+        left: 62%;
+    }
+
+    .node3 {
+        top: 18%;
+        left: 30%;
+    }
+    /* Per-node button sizing overrides (optional) */
+    .node1 .hint-node {
+        width: 44px;
+        height: 44px;
+    }
+
+    .node2 .hint-node {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+    }
+
+    .node3 .hint-node {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+    /* Responsive nudge so cards don’t run offscreen on very small widths */
+    @media (max-width: 520px) {
+        .hint-node-wrap .hint-card {
+            left: 0;
+            top: calc(100% + 10px);
+            transform: none;
+
+            &::before {
+                right: auto;
+                left: 12px;
+                top: -16px;
+                border-color: transparent transparent rgba(10,14,22,0.78) transparent;
+            }
+        }
+    }
+}
+
+/* Make the glowing bell clickable after puzzle success */
+.bell-glow {
+    pointer-events: auto !important; /* your earlier rule set it to none */
+    cursor: pointer;
+    z-index: 5; /* keeps it above nearby art */
+}
+
+/* Optional a11y nicety when navigating with keyboard */
+.bell-glow:focus-visible {
+    outline: 3px solid #cde6ff;
+    outline-offset: 4px;
+    border-radius: 12px; /* soft corner highlight */
+}

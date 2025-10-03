@@ -1,0 +1,304 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Give+You+Glory&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap');
+
+
+.room1 {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    color: #e9edf7;
+    overflow: hidden !important;
+
+    .scene {
+        position: relative;
+        width: min(1200px, 96vw);
+        aspect-ratio: 16 / 9;
+        margin: 0 auto;
+    }
+    /* Shared asset base */
+    .asset {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        max-width: 100%;
+        height: auto;
+    }
+    /* Stocking placements */
+    .stocking.red {
+        left: 29%;
+        top: 35%;
+        width: 70px;
+        transform: rotate(-15deg);
+    }
+
+    .stocking.green {
+        left: 38%;
+        top: 35%;
+        width: 70px;
+        transform: rotate(-15deg);
+    }
+
+    .stocking.blue {
+        left: 48%;
+        top: 35%;
+        width: 70px;
+        transform: rotate(-15deg);
+    }
+
+    .stocking.gold {
+        left: 58%;
+        top: 35%;
+        width: 70px;
+        transform: rotate(-15deg);
+    }
+    /* Digits (tweak freely) */
+    .digit.d7 {
+        left: 30%;
+        top: 37%;
+        width: 17px;
+        transform: rotate(-15deg);
+    }
+
+    .digit.d5 {
+        left: 39%;
+        top: 37%;
+        width: 17px;
+        transform: rotate(-15deg);
+    }
+
+    .digit.dBlue {
+        left: 49%;
+        top: 37%;
+        width: 17px;
+        transform: rotate(-15deg);
+    }
+
+    .digit.dGold {
+        left: 59%;
+        top: 37%;
+        width: 17px;
+        transform: rotate(-15deg);
+    }
+    /* Ornament reward */
+    .ornament {
+        position: absolute;
+        left: 84%;
+        top: 42%;
+        width: 120px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+    /* Make non-interactive assets ignore clicks, but not the ornament button */
+    .asset {
+        pointer-events: none;
+    }
+    /* Clickable ornament */
+    .ornament-btn {
+        position: absolute;
+        left: 47%;
+        top: 42%;
+        width: 120px;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        pointer-events: auto; /* <-- clickable now */
+        z-index: 15; /* above nodes */
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            animation: softPulse 1.6s ease-in-out infinite;
+            filter: drop-shadow(0 0 18px rgba(255,255,180,0.65));
+        }
+    }
+
+
+    .reward-text {
+        position: absolute;
+        left: 47%;
+        bottom: 35%;
+        background: linear-gradient(180deg, rgba(20,28,40,0.95), rgba(14,20,30,0.7));
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 8px 16px;
+        transform: translateX(-50%);
+        font-size: clamp(16px, 2vw, 22px);
+        color: #fffbe6;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+        font-family: 'Give You Glory', cursive;
+        animation: fadeIn .5s ease;
+    }
+    /* Nodes */
+    /* Shared node styles */
+    .node {
+        position: absolute;
+        border-radius: 50%;
+        background: #f7ebbc;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: transform .12s ease, box-shadow .2s ease;
+
+        &:hover {
+            transform: scale(1.06);
+        }
+    }
+    /* Individual node placements & sizes */
+    .node-note {
+        left: 35%;
+        top: 74%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .node-mixer {
+        left: 78%;
+        top: 58%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .node-tree {
+        left: 18%;
+        top: 32%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .node-start {
+        left: 45%;
+        top: 35%;
+        width: 20px;
+        height: 20px;
+
+        .start-label {
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            white-space: nowrap;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+        }
+    }
+    /* Panels (reusable) */
+    .panel {
+        position: absolute;
+        inset: 0;
+        background: rgba(6, 10, 16, 0.55);
+        backdrop-filter: blur(2px);
+        display: grid;
+        place-items: center;
+        z-index: 10;
+        animation: fadeIn .15s ease;
+
+        > *:not(.panel-close) {
+            background: linear-gradient(180deg, rgba(20,28,40,0.95), rgba(14,20,30,0.95));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            width: min(720px, 92vw);
+            padding: clamp(16px, 2.5vw, 24px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+            color: #e9edf7;
+            font-family: 'Give You Glory', cursive; /* ✅ apply hint font */
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.4;
+            word-spacing: 1px;
+        }
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 10px;
+        border-radius: 10px;
+    }
+
+    .panel-close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        border: 0;
+        background: rgba(0,0,0,0.35);
+        color: #fff;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        cursor: pointer;
+    }
+
+    h2 {
+        font-size: clamp(20px, 2.5vw, 26px);
+        margin: 0 0 8px;
+    }
+
+    .panel-text {
+        margin: 8px 0 0;
+        line-height: 1.35;
+        font-family: 'Give You Glory', cursive; /* ✅ ensure all text inside hints uses it */
+    }
+
+    .panel-list {
+        margin: 6px 0 0 18px;
+        line-height: 1.35;
+        font-family: 'Give You Glory', cursive; /* ✅ ensure all text inside hints uses it */
+    }
+
+    .faint {
+        opacity: 0.85;
+        font-style: italic;
+        font-family: 'Give You Glory', cursive; /* ✅ ensure all text inside hints uses it */
+    }
+}
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes softPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1.0);
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.06);
+        }
+    }
+
+.modal {
+    position: absolute;
+    inset: 0;
+    /* ✅ Transparent black overlay */
+    background: rgba(0, 0, 0, 0.6);
+    display: grid;
+    place-items: center;
+    z-index: 20;
+    animation: fadeIn .2s ease;
+
+    .modal-card {
+        background: linear-gradient(180deg, rgba(20,28,40,0.95), rgba(14,20,30,0.95));
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        width: min(500px, 92vw);
+        padding: clamp(16px, 2.5vw, 24px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        color: #e9edf7;
+        position: relative;
+        font-family: 'Sofadi One', cursive; /* ✅ Modal font */
+        word-spacing: 1px;
+        letter-spacing: 0.5px;
+    }
+}

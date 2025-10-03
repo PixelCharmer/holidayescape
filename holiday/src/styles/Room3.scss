@@ -1,0 +1,236 @@
+.room3 {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    color: #e9edf7;
+    overflow: hidden !important;
+}
+
+/* Overlay GIF (floats above background but below nodes) */
+.yard-gif {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    width: min(500px, 96vw);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    z-index: 2; /* keep above bg, below nodes */
+}
+
+.yard-note {
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    width: clamp(120px, 16vw, 220px);
+    pointer-events: none;
+    user-select: none;
+    z-index: 3;
+}
+
+/* Clickable JOY button (appears after solve) */
+.joy-glow-btn {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(800px, 70vw); /* freely resize this */
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 6;
+    /* subtle beckoning animation */
+    animation: joy-pulse 1.6s ease-in-out infinite;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 18px rgba(255,255,255,0.6));
+        user-select: none;
+        pointer-events: none; /* click the button, not the image */
+    }
+
+    &:hover {
+        animation-play-state: paused;
+        filter: drop-shadow(0 0 22px rgba(255,255,255,0.75));
+    }
+}
+
+@keyframes joy-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.03);
+    }
+}
+
+/* Hint nodes */
+.node {
+    position: absolute;
+    background: #d8e4e6;
+    opacity: 0.5;
+    border-radius: 50%;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* Place these wherever you like */
+.node-a {
+    top: 25%;
+    left: 43%;
+}
+
+.node-b {
+    top: 60%;
+    left: 84%;
+}
+
+.node-c {
+    top: 78%;
+    left: 55%;
+}
+
+
+/* Puzzle modal styles remain unchanged */
+/* =========================
+   Puzzle modal styles
+   ========================= */
+
+.r3p-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 12, 0.65);
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+    z-index: 50;
+}
+
+.r3p-overlay.error .r3p-panel {
+    animation: r3p-shake 0.45s ease;
+}
+
+@keyframes r3p-shake {
+    10%, 90% {
+        transform: translateX(-2px);
+    }
+
+    20%, 80% {
+        transform: translateX(4px);
+    }
+
+    30%, 50%, 70% {
+        transform: translateX(-6px);
+    }
+
+    40%, 60% {
+        transform: translateX(6px);
+    }
+}
+
+.r3p-panel {
+    width: min(92vw, 640px);
+    background: linear-gradient(180deg, #0f141c, #0b1016);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.6);
+    padding: clamp(14px, 2.2vw, 22px);
+}
+
+.r3p-panel.success {
+    box-shadow: 0 0 0 2px rgba(120, 245, 180, 0.25), 0 18px 48px rgba(0,0,0,0.65), 0 0 40px rgba(120, 245, 180, 0.25) inset;
+}
+
+.r3p-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.r3p-title {
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.r3p-close {
+    background: transparent;
+    border: 0;
+    color: #e9edf7;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 1;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(255,255,255,0.06);
+    }
+}
+
+.r3p-instructions {
+    margin: 6px 0 14px;
+    font-size: 20px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.r3p-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+    gap: clamp(12px, 2.2vw, 18px);
+    justify-items: center;
+    align-items: center;
+    margin: 10px 0 12px;
+}
+
+.r3p-light {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+        display: block;
+        width: clamp(84px, 18vw, 132px); /* adjust per-asset sizing here */
+        height: auto;
+        user-select: none;
+    }
+}
+
+.r3p-status {
+    min-height: 22px;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+.r3p-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.r3p-label {
+    font-size: 18px;
+    color: #e9edf7;
+    opacity: 0.85;
+    text-align: center;
+    user-select: none;
+}
+
