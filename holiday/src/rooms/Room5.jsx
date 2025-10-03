@@ -67,7 +67,7 @@ export default function Room5() {
                 />
                 {showHints.h2 && (
                     <div className="hint-card hint2-card">
-                        The answer starts and ends the same...and rides in a one horse open sleigh.
+                        what is part of something that rides in a one horse open sleigh.
                     </div>
                 )}
 
@@ -79,7 +79,7 @@ export default function Room5() {
                 />
                 {showHints.h3 && (
                     <div className="hint-card hint3-card">
-                        Punctuation won't matter just trust the classic line
+                        the first part of the song is scrabled around the room, and repeats twice.
                     </div>
                 )}
 

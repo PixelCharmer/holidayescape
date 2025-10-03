@@ -25,8 +25,8 @@ export default function Room5Puzzle({ onClose = () => { }, onSuccess = () => { }
     // Accepted answers (you can add more variants if you want)
     const accepted = useMemo(() => {
         const a = [
-            "jingle bells jingle bells jingle all the way",
-            "jingle bells jingle bells jingle all the way!"
+            "jingle all the way",
+            "jingle all the way!"
         ];
         return new Set(a.map(s =>
             s.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim()
@@ -54,7 +54,7 @@ export default function Room5Puzzle({ onClose = () => { }, onSuccess = () => { }
 
                 <h2 className="r5p-title">Carol Karaoke Finale</h2>
                 <p className="r5p-sub">
-                    Unscramble the room's clues, then type the line to sing.
+                    Unscramble the room's clues, then finish the song.
                 </p>
 
                 <form className="r5p-form" onSubmit={handleSubmit}>
