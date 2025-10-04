@@ -81,7 +81,7 @@ export default function Room1() {
                     <div className="panel" role="dialog" aria-modal="true" aria-label="Stockings note">
                         <button className="panel-close" onClick={() => setShowNote(false)} aria-label="Close">✕</button>
                         <img src={noteStockings} alt='Note reading: "To light the tree, add the colors that mix me."' />
-                        <p className="panel-text">“To light the tree, add the colors that mix me.”</p>
+                        <p className="panel-text">To light the tree, add the colors that mix me.</p>
                     </div>
                 )}
 
@@ -90,11 +90,10 @@ export default function Room1() {
                         <button className="panel-close" onClick={() => setShowMixer(false)} aria-label="Close">✕</button>
                         <h2>Color Clues</h2>
                         <ul className="panel-list">
-                            <li><strong>Gold</strong> shines when <em>Red + Green</em> come together.</li>
-                            <li><strong>Purple</strong> appears from <em>Red + Blue</em> (it’s “more” than either alone).</li>
-                            <li>Two stockings already show their numbers.</li>
+                            <li>Last year we had a <strong>Yellow</strong>stocking with a golden <strong>7</strong></li>
+                            <li><strong>Purple</strong> appears from <em>Red + Blue</em></li>
+                            <li>Maybe "mix" means add the color numbers...</li>
                         </ul>
-                        <p className="panel-text faint">Maybe “mix” means add the color numbers…</p>
                     </div>
                 )}
 
@@ -103,10 +102,10 @@ export default function Room1() {
                         <button className="panel-close" onClick={() => setShowTreeHint(false)} aria-label="Close">✕</button>
                         <h2>Tree Lights</h2>
                         <p className="panel-text">
-                            The lights flicker near the <b>Blue</b> and <b>Gold</b> stockings, waiting for their numbers.
+                            The lights flicker near the <b>Blue</b> and <b>Green</b> stockings, waiting for their numbers.
                         </p>
                         <p className="panel-text faint">
-                            Red = 7, Green = 5… if Purple comes from Red + Blue, what might Blue be?
+                            Red = 5, Purple = 9...if Purple comes from Red + Blue, what might Blue be?
                         </p>
                     </div>
                 )}
